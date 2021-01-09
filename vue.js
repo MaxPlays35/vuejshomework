@@ -1,7 +1,7 @@
 const App = {
   data() {
     return {
-      activeIndex: 1,
+      activeIndex: 0,
       finished: false,
       steps: [
         {title: 'Основы', text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.'},
@@ -14,32 +14,32 @@ const App = {
   },
   methods: {
     prev() {
-      this.activeIndex--
+      if (this.activeIndex)
+        this.activeIndex--
     },
     reset() {
-      this.activeIndex = 1
+      this.activeIndex = 0
       this.finished = false
     },
     nextOfFinish() {
-      if (this.activeIndex === this.steps.length)
+      if (this.isLastStep)
         this.finished = true
-      else {
+      else
         this.activeIndex++
-      }
     },
     setActive(idx) {
-      this.activeIndex = idx + 1
+      this.activeIndex = idx
     }
   },
   computed: {
     currentStep() {
-      return this.activeIndex - 1
+      return this.steps[this.activeIndex]
     },
     backButton() {
-      return !this.currentStep
+      return !this.activeIndex
     },
     isLastStep() {
-      return this.activeIndex === this.steps.length
+      return this.activeIndex === this.steps.length - 1
     }
   }
 }
