@@ -10,6 +10,7 @@ export default {
   props: {
     content: String
   },
+  emits: ['removeBlock']
 }
 </script>
 

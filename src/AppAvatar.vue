@@ -1,12 +1,16 @@
 <template>
-  <div class="avatar">
-    <img :src="content">
+  <div class="inline">
+    <div class="avatar">
+      <img :src="content">
+    </div>
+    <button class="btn danger" @click="$emit('removeBlock')">🧺</button>
   </div>
 </template>
 
 <script>
 export default {
   props: ['content'],
+  emits: ['removeBlock']
 }
 </script>
 
